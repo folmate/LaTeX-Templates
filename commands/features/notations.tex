@@ -1,0 +1,69 @@
+%Packages
+\usepackage{xparse} % needed for easier optional arguments
+
+
+
+%commands
+\newcommand{\texttovql}{\textsc{Text2VQL}}
+\newcommand{\texttomqlc}{\textsc{Text2MQL}}
+\newcommand{\qverify}{\textsc{Querify}}
+
+\newcommand{\evalok}[0]{ { \twemoji{check mark} } }
+\newcommand{\evalerr}[0]{ { \twemoji{cross mark} } }
+\newcommand{\evalwarn}[0]{ { \twemoji{warning} } }
+
+\newcommand{\classsmallfail}[0]{{\color{red!60!black} $\bigtriangledown$}}
+\newcommand{\classbigfail}[0]{{\color{red!60!black} $\blacktriangledown$}}
+\newcommand{\classsmallsuccess}[0]{{\color{green!60!black} $\bigtriangleup$}}
+\newcommand{\classbigsuccess}[0]{{\color{green!60!black} $\blacktriangle$}}
+\newcommand{\classbothsolve}[0]{{\color{green!60!black} $\square$}}
+\newcommand{\classbothfail}[0]{{\color{red!60!black} $\square$}}
+
+
+\newcommand{\interval}[2]{#1--#2}
+\newcommand{\intervalpct}[2]{\interval{#1}{#2\%}}
+
+
+
+
+%%%%%%%%%
+% Terms %
+%%%%%%%%%
+\newcommand*{\llmStyle}[1]{\textit{#1}}
+\NewDocumentCommand{\llmterm}{m o}{%
+    % #1 text to print and default command name
+    % #2 (optional) override command name
+    \IfNoValueTF{#2}{%
+        \expandafter\newcommand\csname #1\endcsname{\llmStyle{#1}}%
+    }{%
+        \expandafter\newcommand\csname #2\endcsname{\llmStyle{#1}}%
+    }%
+}
+\llmterm{1b}[llmIb]
+\llmterm{1.5b}[llmIdVb]
+\llmterm{1.7b}[llmIdVIIb]
+\llmterm{7b}[llmVIIb]
+\llmterm{8b}[llmVIIIb]
+
+\llmterm{DeepSeek Coder}[deepseekcoder]
+\llmterm{CodeLlama}[codellama]
+\llmterm{Qwen2.5 Coder}[qwenIIcoder]
+\llmterm{Qwen3}[qwenIII]
+\llmterm{Qwen}[qwen]
+\llmterm{GPT-5}[gptV]
+
+\newcommand{\railway}{\textbf{\textsc{TB}}}
+\newcommand{\cps}{\textbf{\textsc{CPS}}}
+\newcommand{\dlt}{\textbf{\textsc{DLT}}}
+
+\newcommand{\vql}{\textbf{\textsc{VQL}}}
+\newcommand{\ocl}{\textbf{\textsc{OCL}}}
+\newcommand{\java}{\textbf{\textsc{Java}}}
+
+\newcommand{\ic}{\textbf{\textsc{IC}}}
+\newcommand{\ft}{\textbf{\textsc{FT}}}
+
+
+\newcommand{\llmsmall}{$LLM_{2-}$}
+\newcommand{\llmlarge}{$LLM_{7+}$}
+

@@ -1,0 +1,18 @@
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\usepackage{array}
+
+% colors
+\newcommand{\Gcolor}{green!15}
+\newcommand{\Ycolor}{yellow!15}
+\newcommand{\Rcolor}{red!15}
+
+% column types
+\newcolumntype{G}[1]{>{\columncolor{\Gcolor}}#1}
+\newcolumntype{Y}[1]{>{\columncolor{\Ycolor}}#1}
+\newcolumntype{R}[1]{>{\columncolor{\Rcolor}}#1}
+
+% inline highlight using same colors
+\newcommand{\hlcol}[2]{%
+  \colorbox{\csname #1color\endcsname}{#2}%
+}

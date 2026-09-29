@@ -1,0 +1,25 @@
+\lstset{
+    showspaces=false,  % Remove space characters
+    language=Python,
+    frame=single,
+    numbers=left,
+    basicstyle=\ttfamily\small, %small scriptsize
+}
+
+\lstdefinelanguage{Python}{
+    keywords={def, return, if, else, for, while, break, continue, True, False, None},
+    keywordstyle=\color{blue}\bfseries,
+    ndkeywords={class, lambda, import, from, pass, in, not, and, or},
+    ndkeywordstyle=\color{purple}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{\#},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\color{gray}\ttfamily,
+    stringstyle=\color{darkgreen}\ttfamily,  % Change to a darker shade of green
+    morestring=[b]',
+    morestring=[b]",
+    showstringspaces=false,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}

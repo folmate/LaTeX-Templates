@@ -1,0 +1,71 @@
+\usepackage{listings}
+
+\input{commands/features/listings/colors}
+\input{commands/features/listings/languages}
+\input{commands/features/listings/python}
+
+\input{commands/features/listings/domains}
+
+\lstdefinestyle{smallstyle}{
+    basicstyle=\scriptsize\ttfamily,
+    showstringspaces=false,
+    tabsize=2,
+    captionpos=b,
+    escapeinside={(*@}{@*)},
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+
+
+\lstdefinestyle{viatra_railway}{
+    style=viatra,
+    style=smallstyle,
+    style=railway
+}
+
+\lstdefinestyle{ocl_railway}{
+    style=ocl,
+    style=smallstyle,
+    style=railway
+}
+
+\lstdefinestyle{java_railway}{
+    style=java,
+    style=smallstyle,
+    style=coderailway
+}
+
+\lstdefinestyle{metatext}{
+    style=meta,
+    style=smallstyle,
+    style=railway
+}
+
+\lstdefinestyle{templatesmall}{
+	basicstyle=\scriptsize\ttfamily,
+	commentstyle=\color{commentcolor}\ttfamily,
+	stringstyle=\color{pystringcolor}\ttfamily,
+	%frameround=tttt,
+	captionpos=b,
+	keywordstyle=\color{keywordcolor}\bfseries\ttfamily,
+	showstringspaces=false,
+	tabsize=2,
+	language=Python,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, 
+	escapeinside={(*@}{@*)},
+    literate=
+      {\$lang}{{\textcolor{emphcolor}{\$lang}}}4
+      {\$query}{{\textcolor{emphcolor}{\$query}}}5
+      {\$signature}{{\textcolor{emphcolor}{\$signature}}}{8}
+      {\$idx}{{\textcolor{emphcolor}{\$idx}}}3
+      {\$feature}{{\textcolor{emphcolor}{\$feature}}}7
+      {\$expertise}{{\textcolor{emphcolor}{\$expertise}}}9
+      {\$number}{{\textcolor{emphcolor}{\$number}}}5
+      {\$seed\_queries}{{\textcolor{emphcolor}{\$seed\_queries}}}{11}
+      {\$seed\_metamodel}{{\textcolor{emphcolor}{\$seed\_metamodel}}}{13}
+      {\$new\_metamodel}{{\textcolor{emphcolor}{\$new\_metamodel}}}{12}
+      {\$nl\_description}{{\textcolor{emphcolor}{\$nl\_description}}}{11}
+      {\$metamodel}{{\textcolor{emphcolor}{\$metamodel}}}{8}
+      {\$description}{{\textcolor{emphcolor}{\$description}}}{10}
+}

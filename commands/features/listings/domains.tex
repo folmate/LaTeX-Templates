@@ -1,0 +1,25 @@
+\definecolor{lstdslocolor}{HTML}{001a7d}
+
+\lstdefinestyle{railway}{
+    emph=[2]{SwitchPosition,target,position,Switch,currentPosition,Region,Segment,length, sensors,Sensor,EInt,elements,TrackElement,monitoredBy,connectsTo,Route,active,entry,Semaphore,signal,requires,
+    Position,FAILURE,STRAIGHT, DIVERGING,positions,semaphores},
+    emphstyle=[2]{\color{lstdslocolor}}, 
+}
+\lstdefinestyle{coderailway}{
+    emph=[2]{SwitchPosition,getTarget,getPosition,Switch,getCurrentPosition,
+        Region,Segment,getLength,sensors,Sensor,EInt,elements,EObject,
+        RailwayContainer,getRegions,getSensors,getElements},
+    emphstyle=[2]{\color{lstdslocolor}}, 
+}
+
+\lstdefinestyle{dlt}{
+    moreemph={[2]{Channel,KafkaFabricNetwork,channels,orderedBy,EndorsingNode,ChaincodeInstance,chaincodes,endorses}},
+    emphstyle={[2]\color{lstdslocolor}}, 
+}
+\lstdefinestyle{cps}{
+    moreemph={[2]{HostInstance,nodeIp,Transition,State,outgoingTransitions,targetState,StateMachine,states}},
+    emphstyle={[2]\color{lstdslocolor}}, 
+}
+
+
+

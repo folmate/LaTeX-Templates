@@ -1,0 +1,25 @@
+\usepackage{xparse} % needed for easier optional arguments
+
+\definecolor{dslocolor}{HTML}{001a7d}
+\newcommand*{\dslStyle}[1]{\textsf{\normalfont \color{dslocolor}\textit{#1}}}
+
+\NewDocumentCommand{\dslterm}{m o}{%
+    % #1 text to print and default command name
+    % #2 (optional) override command name
+    \IfNoValueTF{#2}{%
+        \expandafter\newcommand\csname #1\endcsname{\dslStyle{#1}}%
+    }{%
+        \expandafter\newcommand\csname #2\endcsname{\dslStyle{#1}}%
+    }%
+}
+
+\dslterm{RailwayContainer}[rwc]
+\dslterm{Segment}[segment]
+\dslterm{Region}[region]
+\dslterm{Sensor}[sensor]
+\dslterm{length}[rwlength]
+\dslterm{signal}[rwsignal]
+\dslterm{monitoredBy}[monitoredby]
+\dslterm{monitors}[monitors]
+\dslterm{element}[rwelement]
+\dslterm{sensors}[sensors]

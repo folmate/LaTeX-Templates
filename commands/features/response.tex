@@ -1,0 +1,97 @@
+\usepackage{hyperref}
+\usepackage{aliascnt}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+
+% Usage:
+% New enviroments:
+% * responseChange (with changeItem) to list major changes. Optional parameter: prefix, such as MC for major change
+% * review: You can wrap the comments of reviewers with this. Use \newreview for incrementing the reviewer number
+% * reply: Your reply to their feedback.
+% New commands:
+% * \change: refere text that was changed in the paper.
+% * \newreview: see before
+% * \changeItem: see before
+
+
+
+%%%%%%%%%%%%%%%%%%
+% Comment format %
+%%%%%%%%%%%%%%%%%%
+\newcounter{responseReviewerCounter}
+\newcounter{responseCommentCounter}[responseReviewerCounter]
+\newcounter{commentref}
+
+\newcommand{\newreview}{\stepcounter{responseReviewerCounter}}
+
+%\newenvironment{comment}{
+%        \stepcounter{responseCommentCounter}
+%        \refstepcounter{commentref}
+%        \noindent \textbf{R\arabic{responseReviewerCounter}C\arabic{responseCommentCounter}:} \begin{itshape}
+%    }
+%    {\end{itshape}}
+
+\newenvironment{review}{%
+        \stepcounter{responseCommentCounter}
+        \refstepcounter{commentref}
+        \noindent \textbf{R\arabic{responseReviewerCounter}C\arabic{responseCommentCounter}:} \begin{itshape}}
+    {\end{itshape}}
+
+\newenvironment{review1}[1]{
+        \stepcounter{responseCommentCounter}
+        \refstepcounter{commentref}
+        \noindent \textbf{R\arabic{responseReviewerCounter}C\arabic{responseCommentCounter} #1:} \begin{itshape}}
+    {\end{itshape}}
+    
+%Commented out to remove the extra space
+%\providecommand*{\commentrefautorefname}{}
+\renewcommand{\thecommentref}{\textbf{R\arabic{responseReviewerCounter}C\arabic{responseCommentCounter}}}
+
+%%%%%%%%%%%%%%%%
+% Reply format %
+%%%%%%%%%%%%%%%%
+
+\newenvironment{reply}[1][]{
+
+\noindent \textbf{Reply:} #1
+}{\vspace{1em}}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Paper change format %
+%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\change}[1]{
+{
+
+\color{blue}``#1"}
+}
+
+
+
+%%%%%%%%%%%%%%%
+% Change list %
+%%%%%%%%%%%%%%%
+
+% Custom enumerate environment with prefix key
+\newcounter{responseChangeCounter}
+\newcounter{responseChangeListCounter} % for per-list numbering
+
+\newenvironment{responseChange}[1][]{
+  \def\myenumkey{#1}%
+  \setcounter{responseChangeListCounter}{0}%
+  \begin{itemize}[left=0pt, label=\hspace{1.5em}\textbullet]
+}{
+  \end{itemize}
+}
+
+\newcommand{\changeItem}[2][]{%
+  \stepcounter{responseChangeListCounter}%
+  \refstepcounter{responseChangeCounter}%
+  \def\@tempa{#1}%
+  \ifstrempty{\@tempa}%
+    {\item \textbf{\myenumkey\arabic{responseChangeListCounter}}: #2}%
+    {\item \textbf{\myenumkey\arabic{responseChangeListCounter}~#1:} #2}%
+}
+
+% For references
+\renewcommand{\theresponseChangeCounter}{\textbf{\myenumkey\arabic{responseChangeListCounter}}}
+\newcommand{\myenumautorefname}{Item}

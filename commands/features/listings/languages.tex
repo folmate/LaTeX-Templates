@@ -1,0 +1,76 @@
+\usepackage{xparse} % needed for easier optional arguments
+
+\newcommand*{\langKeywordStyle}[1]{{\normalfont \color{keywordcolor}\textbf{#1}}}
+\NewDocumentCommand{\langkeyword}{m o}{%
+    % #1 text to print and default command name
+    % #2 (optional) override command name
+    \IfNoValueTF{#2}{%
+        \expandafter\newcommand\csname #1\endcsname{\langKeywordStyle{#1}}%
+    }{%
+        \expandafter\newcommand\csname #2\endcsname{\langKeywordStyle{#1}}%
+    }%
+}
+
+\lstdefinelanguage{ocllang}{
+    morekeywords={allInstances,select,size,collect,sum,or},
+    sensitive=true, 
+    morecomment=[l]{--},
+    morestring=[b]{"}
+}
+\langkeyword{allInstances}
+\langkeyword{select}
+\langkeyword{size}
+\langkeyword{collect}
+\langkeyword{sum}[oclsum]
+\langkeyword{or}[oclor]
+\lstdefinestyle{ocl}{
+    language=ocllang,
+    keywordstyle=\color{keywordcolor}\bfseries\ttfamily,
+    commentstyle=\color{commentcolor}\ttfamily,
+    stringstyle=\color{stringcolor}\ttfamily
+}
+
+\lstdefinelanguage{langviatra}{
+    alsoletter=@,
+    morekeywords={
+        @QueryBasedFeature,@Constraint,count,pattern,package,neg,find,import,
+        true,false,or,check,eval,job,state,severity,location,message,
+        oclIsKindOf,self,exists,includes,invariant,class,private,epackage,
+        java,public,double,int,static
+    },
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]{""}
+}
+\langkeyword{find}
+\langkeyword{neg}[viatraneg]
+\langkeyword{pattern}
+\lstdefinestyle{viatra}{
+    language=langviatra,
+    keywordstyle=\color{keywordcolor}\bfseries\ttfamily,
+    commentstyle=\color{commentcolor}\ttfamily,
+    stringstyle=\color{stringcolor}\ttfamily
+}
+
+\lstdefinestyle{java}{
+    language=Java,
+    keywordstyle=\color{keywordcolor}\bfseries\ttfamily,
+    commentstyle=\color{commentcolor}\ttfamily,
+    stringstyle=\color{stringcolor}\ttfamily
+}
+
+\lstdefinelanguage{langmeta}{
+    morekeywords={class,extends,attribute,reference,enum,pattern,public,static,record},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]{"}
+}
+
+\lstdefinestyle{meta}{
+    language=langmeta,
+    keywordstyle=\color{keywordcolor}\bfseries\ttfamily,
+    commentstyle=\color{commentcolor}\ttfamily,
+    stringstyle=\color{stringcolor}\ttfamily
+}

@@ -1,0 +1,73 @@
+\usepackage{xparse}
+\usepackage{kvsetkeys}
+
+\makeatletter
+
+% storage
+\def\sec@short{}
+\def\sec@label{}
+
+\define@key{sec}{label}{\def\sec@label{#1}}
+\define@key{sec}{short}{\def\sec@short{#1}}
+
+\newcommand{\sec@reset}{%
+  \def\sec@short{}%
+  \def\sec@label{}%
+}
+
+\newcommand{\sec@parse}[1]{%
+  \sec@reset
+  \kvsetkeys{sec}{#1}%
+}
+
+% Save originals
+\let\oldsection\section
+\let\oldsubsection\subsection
+\let\oldsubsubsection\subsubsection
+
+% ---------------- SECTION ----------------
+\RenewDocumentCommand{\section}{ s o m }{%
+  \IfNoValueF{#2}{\sec@parse{#2}}%
+  \IfBooleanTF{#1}
+    { \oldsection*{#3} }%
+    {%
+      \ifx\sec@short\@empty
+        \oldsection{#3}%
+      \else
+        \oldsection[\sec@short]{#3}%
+      \fi
+    }%
+  \ifx\sec@label\@empty\else\label{\sec@label}\fi
+}
+
+% ---------------- SUBSECTION ----------------
+\RenewDocumentCommand{\subsection}{ s o m }{%
+  \IfNoValueF{#2}{\sec@parse{#2}}%
+  \IfBooleanTF{#1}
+    { \oldsubsection*{#3} }%
+    {%
+      \ifx\sec@short\@empty
+        \oldsubsection{#3}%
+      \else
+        \oldsubsection[\sec@short]{#3}%
+      \fi
+    }%
+  \ifx\sec@label\@empty\else\label{\sec@label}\fi
+}
+
+% ---------------- SUBSUBSECTION ----------------
+\RenewDocumentCommand{\subsubsection}{ s o m }{%
+  \IfNoValueF{#2}{\sec@parse{#2}}%
+  \IfBooleanTF{#1}
+    { \oldsubsubsection*{#3} }%
+    {%
+      \ifx\sec@short\@empty
+        \oldsubsubsection{#3}%
+      \else
+        \oldsubsubsection[\sec@short]{#3}%
+      \fi
+    }%
+  \ifx\sec@label\@empty\else\label{\sec@label}\fi
+}
+
+\makeatother
